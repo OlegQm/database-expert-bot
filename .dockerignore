@@ -1,0 +1,6 @@
+__pycache__/
+.vs/
+.pytest_cache/
+*.pyproj
+*.user
+*.sln

@@ -1,0 +1,7 @@
+streamlit==1.46.1
+langchain-core==0.3.68
+langchain==0.3.26
+langchain-openai==0.3.28
+langchain-community==0.3.27
+pytest==8.4.1
+python-dotenv==1.0.1

@@ -1,0 +1,10 @@
+pytest_cache
+.pytest_cache
+*/.pytest_cache
+**/__pycache__/
+.vs/
+.pytest_cache/
+gpt_.pyproj
+app_and_bot.pyproj.user
+app_and_bot.sln
+.env

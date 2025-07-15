@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: web-app-deploy
+spec:
+  selector:
+    matchLabels:
+      app: web-app-deploy
+  template:
+    metadata:
+      labels:
+        app: web-app-deploy
+    spec:
+      containers:
+      - name: web-app-deploy
+        image: olehsavchenko/app_and_bot:latest
+        resources:
+          limits:
+            memory: 1024Mi
+            cpu: 2000m
+        ports:
+        - containerPort: 8501
