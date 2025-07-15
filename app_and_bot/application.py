@@ -1,7 +1,6 @@
 import streamlit as st
-import os
 from app_and_bot.bot import GPTBot
-from dotenv import load_dotenv
+from app_and_bot.config import settings
 
 def create_bot(api_key: str, model_name: str):
     """
@@ -26,7 +25,12 @@ class Application():
         GPTBot: An instance of GPTBot configured with the given API key and model name.
         """
         model_name = self.__initialize_interface()
-        self.__bot = create_bot(api_key, model_name)
+        
+        # Check if a bot instance exists in the session state and if the model has been changed.
+        if "bot" not in st.session_state or st.session_state.bot.get_model_name() != model_name:
+            st.session_state.bot = create_bot(api_key, model_name)
+        
+        self.__bot = st.session_state.bot
         self.__update_conversation()
             
     def __initialize_interface(self) -> str:
@@ -77,9 +81,7 @@ def main():
     The main function of the application. Retrieves the API key from the environment variables
     and initializes the Application class to start the Streamlit interface.
     """
-    load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
-    app = Application(api_key)
-    
+    app = Application(settings.openai_api_key)
+
 if __name__ == "__main__":
      main()

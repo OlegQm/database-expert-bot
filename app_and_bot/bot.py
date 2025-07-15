@@ -3,8 +3,8 @@ from langchain_core.messages.ai import AIMessage
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
-import os
-from dotenv import load_dotenv
+
+from app_and_bot.config import settings
 
 class GPTBot:
     def __init__(
@@ -28,9 +28,8 @@ class GPTBot:
         self.__model = model_name
         self.__temperature = temperature
         self.__conversation_history = ChatMessageHistory()
-        load_dotenv()
         if not api_key or api_key == "default":
-            api_key = os.getenv("OPENAI_API_KEY", "default")
+            api_key = settings.openai_api_key
         self.__api_key = api_key
         self.__model_instance = ChatOpenAI(
             model=self.__model,
@@ -50,6 +49,14 @@ class GPTBot:
             input_messages_key="input",
             history_messages_key="history"
         )
+
+    def get_model_name(self) -> str:
+        """
+        Returns the model name of the bot.
+
+        Returns: The model name.
+        """
+        return self.__model
 
     def __get_session_history(self, session_id: str) -> ChatMessageHistory:
         """
@@ -107,9 +114,7 @@ def main() -> None:
     Main function to initialize the GPTBot and simulate a conversation
     with him.
     """
-    load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
-    bot = GPTBot(api_key)
+    bot = GPTBot(settings.openai_api_key)
     
     messages = [
         "Hello, what is your name?",

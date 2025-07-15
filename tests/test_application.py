@@ -1,7 +1,6 @@
 import pytest
-import os
 from app_and_bot.application import Application
-from dotenv import load_dotenv
+from app_and_bot.config import settings
 
 @pytest.fixture(scope="module")
 def api_key():
@@ -10,8 +9,7 @@ def api_key():
 
     Returns: The API key for accessing the GPT model.
     """
-    load_dotenv()
-    return os.getenv("OPENAI_API_KEY")
+    return settings.openai_api_key
     
 @pytest.fixture(scope="module")
 def application(api_key):
