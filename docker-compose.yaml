@@ -1,6 +1,8 @@
 services:
   app:
-    build: .
+    build:
+      context: ./
+      dockerfile: ./bot_app/Dockerfile
     restart: always
     ports:
       - 8501:8501

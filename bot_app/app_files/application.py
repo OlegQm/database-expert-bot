@@ -1,6 +1,6 @@
 import streamlit as st
-from app_and_bot.bot import GPTBot
-from app_and_bot.config import settings
+from app_files.bot import GPTBot
+from app_files.config import settings
 
 def create_bot(api_key: str, model_name: str):
     """

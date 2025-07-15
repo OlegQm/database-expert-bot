@@ -8,3 +8,4 @@ gpt_.pyproj
 app_and_bot.pyproj.user
 app_and_bot.sln
 .env
+.trunk

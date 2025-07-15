@@ -1,6 +1,6 @@
 import pytest
-from app_and_bot.bot import GPTBot
-from app_and_bot.config import settings
+from app_files.bot import GPTBot
+from app_files.config import settings
 
 @pytest.fixture(scope="module")
 def api_key() -> str:

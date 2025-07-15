@@ -1,6 +1,6 @@
 import pytest
-from app_and_bot.application import Application
-from app_and_bot.config import settings
+from app_files.application import Application
+from app_files.config import settings
 
 @pytest.fixture(scope="module")
 def api_key():

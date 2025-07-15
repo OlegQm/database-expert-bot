@@ -4,7 +4,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
-from app_and_bot.config import settings
+from app_files.config import settings
 
 class GPTBot:
     def __init__(

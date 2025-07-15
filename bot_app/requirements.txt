@@ -5,4 +5,3 @@ langchain-openai==0.3.28
 langchain-community==0.3.27
 pydantic-settings==2.9.1
 pytest==8.4.1
-python-dotenv==1.0.1
